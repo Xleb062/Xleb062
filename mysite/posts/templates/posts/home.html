@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'posts/home1.css'%}">
+{% endblock css %}
+
+{% block body %}
+    {% for post in posts %}
+
+       <a href="/posts/{{post.id}}"><h1>{{post.id}} - {{post.article_title|title}}</h1></a>
+       <p>{{post.article_content|truncatewords:5}}</p>
+       {% empty %}
+            <h1>Постов нет, ты лох</h1>
+
+    {% endfor %}
+{% endblock body %}
+
